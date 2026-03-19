@@ -22,14 +22,14 @@ import {
   deleteUserByUsername,
   updateUserPassword
 } from './services/dbService';
-import { decrypt } from './src/utils/encryption';
+import { decrypt } from './utils/encryption';
 import { playWinSound, playDissonance, playHarmony, startRhythmBeat, stopRhythmBeat } from './services/audioService';
 import MicrophoneButton from './components/MicrophoneButton';
 import StatsCard from './components/StatsCard';
 import BottomNav from './components/BottomNav';
 import TopBar from './components/TopBar';
-import { GameButton } from './src/components/GameButton';
-import { NoWordsModal } from './src/components/NoWordsModal';
+import { GameButton } from './components/GameButton';
+import { NoWordsModal } from './components/NoWordsModal';
 import LibraryPage from './pages/LibraryPage';
 import StatsPage from './pages/StatsPage';
 
@@ -595,10 +595,22 @@ export default function App() {
 
   // --- HELPER: Pronunciation ---
   const getPartPronunciation = (data: WordData, index: number) => {
-    if (data.partsPronunciation && data.partsPronunciation[index]) {
-      return data.partsPronunciation[index];
+    let pron = data.partsPronunciation && data.partsPronunciation[index] ? data.partsPronunciation[index] : data.parts[index];
+    
+    // Hardcoded fixes for specific words that TTS struggles with
+    if (data.word.toLowerCase() === 'kangaroo') {
+      const partLower = data.parts[index].toLowerCase();
+      if (partLower === 'kan') return 'kang';
+      if (partLower === 'ga') return 'guh';
+      if (partLower === 'roo') return 'roo';
     }
-    return data.parts[index];
+    if (data.word.toLowerCase() === 'penguin') {
+      const partLower = data.parts[index].toLowerCase();
+      if (partLower === 'pen') return 'pen';
+      if (partLower === 'guin') return 'gwin';
+    }
+    
+    return pron;
   };
 
   // --- NAVIGATION & FLOW ---

@@ -59,6 +59,8 @@ export const generateWordData = async (word: string): Promise<WordData> => {
          - **Specific Override**: For "slime", use ["s", "lime"].
          - **Specific Override**: For "bait", use ["bait"].
          - **Specific Override**: For "kitchen", use ["kit", "chen"].
+         - **Specific Override**: For "kangaroo", use ["kan", "ga", "roo"].
+         - **Specific Override**: For "penguin", use ["pen", "guin"].
          - **Specific Override**: For "complementary", use ["com", "ple", "men", "ta", "ry"].
          - **Goal**: Every part should be a pronounceable chunk, ideally following "One Vowel One Consonant" flow where the consonant leads the next vowel.
       2. "partsPronunciation": An array of simple English strings mirroring "parts" to help a TTS engine pronounce the syllable correctly in isolation.
@@ -70,6 +72,8 @@ export const generateWordData = async (word: string): Promise<WordData> => {
          - **Specific Override**: "bait" in bait -> "bate".
          - **Specific Override**: "cake" in cake -> "cake".
          - **Specific Override**: "kit" in kitchen -> "kit". "chen" in kitchen -> "chin".
+         - **Specific Override**: "kan" in kangaroo -> "kang". "ga" in kangaroo -> "guh". "roo" in kangaroo -> "roo".
+         - **Specific Override**: "pen" in penguin -> "pen". "guin" in penguin -> "gwin".
          - **Specific Override**: "com" in complementary -> "kom". "ple" in complementary -> "pluh". "men" in complementary -> "men". "ta" in complementary -> "tuh". "ry" in complementary -> "ree".
          - **Specific Override**: "vou" in favourite -> "vuh". "rite" in favourite -> "rit".
          - **Specific Override**: "vo" in favorite -> "vuh". "rite" in favorite -> "rit".

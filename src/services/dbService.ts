@@ -1,6 +1,6 @@
 import { WordData, DBWordRecord, User, DailyStats } from "../types";
 import { INITIAL_WORDS } from "./initialWords";
-import { encrypt, decrypt } from "../src/utils/encryption";
+import { encrypt, decrypt } from "../utils/encryption";
 
 const DB_NAME = 'StarSpellerDB';
 const DB_VERSION = 3; // Upgraded version for Daily Stats support
